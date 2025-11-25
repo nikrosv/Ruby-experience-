@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jennie - Ruby Jane Portfolio</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', serif;
+      background-color: #000000;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      width: 100%;
+      min-height: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #000000 0%, #1a0000 50%, #000000 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(139, 0, 0, 0.4) 0%, transparent 70%);
+      border-radius: 50%;
+      top: -150px;
+      right: -150px;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(139, 0, 0, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+      bottom: -100px;
+      left: -100px;
+      animation: pulse 5s ease-in-out infinite 2s;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.10; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 96px;
+      font-weight: 900;
+      margin: 0;
+      letter-spacing: 12px;
+      background: linear-gradient(90deg, #ffffff 0%, #8B0000 50%, #ffffff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 5s ease infinite;
+      background-size: 200% 100%;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      font-weight: 300;
+      margin: 20px 0 0 0;
+      color: #8B0000;
+      letter-spacing: 12px;
+    }
+
+    .scroll-indicator {
+      margin-top: 60px;
+      font-size: 14px;
+      color: #8B0000;
+      letter-spacing: 2px;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    /* Content Sections */
+    .section {
+      width: 100%;
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: #8B0000;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      border-left: 6px solid #8B0000;
+      padding-left: 24px;
+    }
+
+    .about-content {
+      font-size: 20px;
+      line-height: 1.8;
+      color: #cccccc;
+      max-width: 800px;
+    }
+
+    /* Ruby Experience Section */
+    .ruby-experience {
+      width: 100%;
+      background: linear-gradient(135deg, #0a0000 0%, #1a0000 50%, #0a0000 100%);
+      padding: 100px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-top: 3px solid #8B0000;
+      border-bottom: 3px solid #8B0000;
+    }
+
+    .ruby-experience::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(139, 0, 0, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      top: 50%;
+      left: 10%;
+      transform: translateY(-50%);
+    }
+
+    .ruby-experience::after {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(139, 0, 0, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      top: 50%;
+      right: 10%;
+      transform: translateY(-50%);
+    }
+
+    .ruby-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .ruby-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 84px;
+      color: #8B0000;
+      margin: 0 0 40px 0;
+      text-shadow: 2px 2px 4px rgba(139, 0, 0, 0.3);
+      font-weight: 400;
+    }
+
+    .ruby-text {
+      font-size: 22px;
+      line-height: 2;
+      color: #e0e0e0;
+      font-style: italic;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Album Section with Image */
+    .album-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    .album-image-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(139, 0, 0, 0.5);
+      border: 4px solid #8B0000;
+    }
+
+    .album-image {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1a0000 0%, #000000 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 120px;
+      position: relative;
+    }
+
+    .album-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at center, transparent 30%, rgba(139, 0, 0, 0.3) 100%);
+    }
+
+    .album-details {
+      padding: 20px;
+    }
+
+    .album-details h3 {
+      font-size: 56px;
+      margin: 0 0 24px 0;
+      color: #8B0000;
+      letter-spacing: 4px;
+    }
+
+    .album-details p {
+      font-size: 20px;
+      line-height: 1.8;
+      color: #cccccc;
+      margin: 0;
+    }
+
+    /* Awards Section */
+    .awards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .award-item {
+      background: #0a0a0a;
+      border: 2px solid #8B0000;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .award-item:hover {
+      background: #1a0000;
+      border-width: 3px;
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(139, 0, 0, 0.4);
+    }
+
+    .award-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .award-item h4 {
+      font-size: 20px;
+      margin: 0 0 8px 0;
+      color: #ffffff;
+    }
+
+    .award-item p {
+      font-size: 16px;
+      margin: 0;
+      color: #8B0000;
+      font-weight: 600;
+    }
+
+    /* Spotify Section */
+    .spotify-section {
+      background: linear-gradient(135deg, #1a0000 0%, #000000 100%);
+      border-radius: 20px;
+      padding: 60px 40px;
+      text-align: center;
+      margin-top: 40px;
+      border: 3px solid #8B0000;
+    }
+
+    .spotify-stats {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 48px;
+      font-weight: 700;
+      color: #8B0000;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 18px;
+      color: #cccccc;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .spotify-button {
+      display: inline-block;
+      background: #8B0000;
+      color: #ffffff;
+      padding: 20px 60px;
+      border-radius: 50px;
+      font-size: 20px;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .spotify-button:hover {
+      background: #A00000;
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(139, 0, 0, 0.6);
+    }
+
+    /* Footer */
+    .footer {
+      width: 100%;
+      text-align: center;
+      padding: 40px;
+      background: #000000;
+      color: #666666;
+      font-size: 14px;
+      letter-spacing: 2px;
+      border-top: 1px solid #8B0000;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 56px;
+        letter-spacing: 4px;
+      }
+
+      .hero h2 {
+        font-size: 28px;
+        letter-spacing: 6px;
+      }
+
+      .ruby-title {
+        font-size: 56px;
+      }
+
+      .album-showcase {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .album-details h3 {
+        font-size: 36px;
+      }
+
+      .section {
+        padding: 60px 24px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .spotify-stats {
+        gap: 40px;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body>
+  <div class="container"><!-- Hero Section -->
+   <section class="hero">
+    <div class="hero-content">
+     <h1 id="main-title">JENNIE</h1>
+     <h2 id="subtitle">RUBY JANE</h2>
+     <div class="scroll-indicator">
+      Experience
+     </div>
+    </div>
+   </section><!-- About Section -->
+   <section class="section">
+    <h2 class="section-title" id="about-title">Sobre</h2>
+    <div class="about-content">
+     <p id="about-text">Jennie Kim, conhecida profissionalmente como Jennie, é uma cantora, rapper e atriz sul-coreana. Membro do grupo BLACKPINK, ela conquistou o mundo com seu talento único e presença de palco incomparável. Seu apelido "Ruby Jane" representa sua personalidade preciosa e brilhante na indústria musical.</p>
+    </div>
+   </section><!-- Ruby Experience Section -->
+   <section class="ruby-experience">
+    <div class="ruby-content">
+     <h2 class="ruby-title" id="ruby-title">Ruby Experience</h2>
+     <p class="ruby-text" id="ruby-text">Uma jornada musical que transcende fronteiras, onde cada nota carrega a essência de uma joia rara. O Ruby não é apenas um álbum, é uma experiência sensorial que captura a intensidade, a paixão e o brilho incomparável de Jennie como artista solo.</p>
+    </div>
+   </section><!-- Album Section -->
+   <section class="section">
+    <h2 class="section-title">Álbum</h2>
+    <div class="album-showcase">
+     <div class="album-image-container">
+      <div class="album-image">
+       <img src="imagens/minha_foto1.jpg" alt="ruby jane pic">
+
+    
+       <div> 
+
+      </div>
+     </div>
+     <div class="album-details">
+      <h3 id="album-title">RUBY</h3>
+      <p id="album-description">Um álbum solo que destaca a versatilidade e o talento único de Jennie, misturando hip-hop, pop e R&amp;B com uma estética visual deslumbrante em preto e vermelho. Cada faixa é uma declaração de independência artística e poder feminino.</p>
+     </div>
+    </div>
+   </section><!-- Awards Section -->
+   <section class="section">
+    <h2 class="section-title" id="awards-title">Prêmios</h2>
+    <div class="awards-container">
+     <div class="award-item">
+      <div class="award-icon">
+       🏆
+      </div>
+      <h4>Mnet Asian Music Awards</h4>
+      <p>Melhor Performance Feminina Solo</p>
+     </div>
+     <div class="award-item">
+      <div class="award-icon">
+       ⭐
+      </div>
+      <h4>Gaon Chart Music Awards</h4>
+      <p>Artista Digital do Ano</p>
+     </div>
+     <div class="award-item">
+      <div class="award-icon">
+       🎖️
+      </div>
+      <h4>Golden Disc Awards</h4>
+      <p>Melhor Álbum Digital</p>
+     </div>
+     <div class="award-item">
+      <div class="award-icon">
+       👑
+      </div>
+      <h4>Seoul Music Awards</h4>
+      <p>Bonsang Award</p>
+     </div>
+     <div class="award-item">
+      <div class="award-icon">
+       💫
+      </div>
+      <h4>Melon Music Awards</h4>
+      <p>Top 10 Artists</p>
+     </div>
+     <div class="award-item">
+      <div class="award-icon">
+       🌟
+      </div>
+      <h4>MTV Video Music Awards</h4>
+      <p>Best K-Pop Video</p>
+     </div>
+    </div>
+   </section><!-- Spotify Section -->
+   <section class="section">
+    <div class="spotify-section">
+     <h2 class="section-title" id="spotify-title" style="text-align: center; border: none; padding: 0;">Perfil do Spotify</h2>
+     <div class="spotify-stats">
+      <div class="stat-item"><span class="stat-number">40M+</span> <span class="stat-label">Ouvintes Mensais</span>
+      </div>
+      <div class="stat-item"><span class="stat-number">2.2B+</span> <span class="stat-label">Streams Totais</span>
+      </div>
+      <div class="stat-item"><span class="stat-number">Top #25</span> <span class="stat-label">Global</span>
+      </div>
+     </div><a href="https://open.spotify.com/artist/250b0Wlc5Vk0CoUsaCY84M" target="_blank" rel="noopener noreferrer" class="spotify-button" id="spotify-button">Ouça no Spotify</a>
+    </div>
+   </section><!-- Footer -->
+   <footer class="footer">
+    <p>© 2024 JENNIE RUBY JANE PORTFOLIO • BY NIKROSV</p>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      background_color: "#000000",
+      accent_color: "#8B0000",
+      text_color: "#ffffff",
+      secondary_text_color: "#cccccc",
+      surface_color: "#1a0000",
+      font_family: "Playfair Display",
+      font_size: 16,
+      main_title: "JENNIE",
+      subtitle: "RUBY JANE",
+      about_title: "Sobre",
+      about_text: "Jennie Kim, conhecida profissionalmente como Jennie, é uma cantora, rapper e atriz sul-coreana. Membro do grupo BLACKPINK, ela conquistou o mundo com seu talento único e presença de palco incomparável. Seu apelido \"Ruby Jane\" representa sua personalidade preciosa e brilhante na indústria musical.",
+      ruby_title: "Ruby Experience",
+      ruby_text: "Uma jornada musical que transcende fronteiras, onde cada nota carrega a essência de uma joia rara. O Ruby não é apenas um álbum, é uma experiência sensorial que captura a intensidade, a paixão e o brilho incomparável de Jennie como artista solo.",
+      album_title: "RUBY",
+      album_description: "Um álbum solo que destaca a versatilidade e o talento único de Jennie, misturando hip-hop, pop e R&B com uma estética visual deslumbrante em preto e vermelho. Cada faixa é uma declaração de independência artística e poder feminino.",
+      awards_title: "Prêmios",
+      spotify_title: "Perfil do Spotify",
+      spotify_button: "Ouça no Spotify"
+    };
+
+    async function onConfigChange(config) {
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const secondaryTextColor = config.secondary_text_color || defaultConfig.secondary_text_color;
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseSize = config.font_size || defaultConfig.font_size;
+
+      // Apply colors
+      document.body.style.backgroundColor = backgroundColor;
+      document.body.style.color = textColor;
+
+      const hero = document.querySelector('.hero');
+      hero.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${surfaceColor} 50%, ${backgroundColor} 100%)`;
+
+      document.querySelectorAll('.section-title').forEach(el => {
+        el.style.color = accentColor;
+        el.style.borderLeftColor = accentColor;
+      });
+
+      document.querySelectorAll('.hero h2, .ruby-title, .stat-number, .award-item p, .album-details h3').forEach(el => {
+        el.style.color = accentColor;
+      });
+
+      document.querySelectorAll('.about-content, .album-details p, .stat-label, .ruby-text').forEach(el => {
+        el.style.color = secondaryTextColor;
+      });
+
+      document.querySelectorAll('.award-item').forEach(el => {
+        el.style.borderColor = accentColor;
+      });
+
+      const rubyExperience = document.querySelector('.ruby-experience');
+      rubyExperience.style.borderTopColor = accentColor;
+      rubyExperience.style.borderBottomColor = accentColor;
+      rubyExperience.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, ${surfaceColor} 50%, ${backgroundColor} 100%)`;
+
+      const albumImageContainer = document.querySelector('.album-image-container');
+      albumImageContainer.style.borderColor = accentColor;
+
+      const albumImage = document.querySelector('.album-image');
+      albumImage.style.background = `linear-gradient(135deg, ${surfaceColor} 0%, ${backgroundColor} 100%)`;
+
+      const spotifySection = document.querySelector('.spotify-section');
+      spotifySection.style.background = `linear-gradient(135deg, ${surfaceColor} 0%, ${backgroundColor} 100%)`;
+      spotifySection.style.borderColor = accentColor;
+
+      const spotifyBtn = document.querySelector('.spotify-button');
+      spotifyBtn.style.backgroundColor = accentColor;
+
+      const footer = document.querySelector('.footer');
+      footer.style.borderTopColor = accentColor;
+
+      // Apply font
+      const baseFontStack = 'serif';
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+
+      // Apply font sizes
+      document.querySelector('.hero h1').style.fontSize = `${baseSize * 6}px`;
+      document.querySelector('.hero h2').style.fontSize = `${baseSize * 3}px`;
+      document.querySelectorAll('.section-title').forEach(el => {
+        el.style.fontSize = `${baseSize * 3}px`;
+      });
+      document.querySelector('.about-content').style.fontSize = `${baseSize * 1.25}px`;
+      document.querySelector('.ruby-title').style.fontSize = `${baseSize * 5.25}px`;
+      document.querySelector('.ruby-text').style.fontSize = `${baseSize * 1.375}px`;
+      document.querySelector('.album-details h3').style.fontSize = `${baseSize * 3.5}px`;
+      document.querySelector('.album-details p').style.fontSize = `${baseSize * 1.25}px`;
+      document.querySelectorAll('.stat-number').forEach(el => {
+        el.style.fontSize = `${baseSize * 3}px`;
+      });
+      document.querySelectorAll('.stat-label').forEach(el => {
+        el.style.fontSize = `${baseSize * 1.125}px`;
+      });
+      document.querySelector('.spotify-button').style.fontSize = `${baseSize * 1.25}px`;
+
+      // Apply text content
+      document.getElementById('main-title').textContent = config.main_title || defaultConfig.main_title;
+      document.getElementById('subtitle').textContent = config.subtitle || defaultConfig.subtitle;
+      document.getElementById('about-title').textContent = config.about_title || defaultConfig.about_title;
+      document.getElementById('about-text').textContent = config.about_text || defaultConfig.about_text;
+      document.getElementById('ruby-title').textContent = config.ruby_title || defaultConfig.ruby_title;
+      document.getElementById('ruby-text').textContent = config.ruby_text || defaultConfig.ruby_text;
+      document.getElementById('album-title').textContent = config.album_title || defaultConfig.album_title;
+      document.getElementById('album-description').textContent = config.album_description || defaultConfig.album_description;
+      document.getElementById('awards-title').textContent = config.awards_title || defaultConfig.awards_title;
+      document.getElementById('spotify-title').textContent = config.spotify_title || defaultConfig.spotify_title;
+      document.getElementById('spotify-button').textContent = config.spotify_button || defaultConfig.spotify_button;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () =>
